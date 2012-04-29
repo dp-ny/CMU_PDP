@@ -12,7 +12,7 @@
   <%= yield %>
 </div>
 
-<div id="login">
+<div id="user_nav">
   <% if logged_in? %>
   	<p>[<%= current_user.proper_name %>: <%= current_user.role.capitalize %>]</p>
    	<%= link_to 'Logout', logout_path, :class => "btn mini" %>

@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.chronological.paginate(:page => params[:page]).per_page(10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,11 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
-    @attendance = EventAttendance.for_event(@event.id)
+    @attendance = EventAttendance.for_event(@event.id).paginate(:page => params[:page]).per_page(10)
+    @exact_attendance = @event.take_attendance
+    @present_events = @exact_attendance[0]
+    @late_events = @exact_attendance[1]
+    @absent_events = @exact_attendance[2]
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }

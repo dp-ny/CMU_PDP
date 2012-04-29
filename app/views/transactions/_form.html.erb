@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.collection_select :user_id, User.alphabetical, :id, :proper_name, :prompt => "Select ..." %>
   </div>
   <div class="field">
     <%= f.label :date %><br />
@@ -28,6 +28,7 @@
     <%= f.text_field :amount %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'btn' %>
+    <%= link_to 'Back', transactions_path, :class => 'btn' %>
   </div>
 <% end %>

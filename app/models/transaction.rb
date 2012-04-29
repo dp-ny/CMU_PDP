@@ -3,6 +3,8 @@ class Transaction < ActiveRecord::Base
 
   belongs_to :user
 
+  scope :for_user, lambda {|user_id| where("user_id = ?", user_id) }
+
   validates_date :date
   validates_numericality_of :amount
 end

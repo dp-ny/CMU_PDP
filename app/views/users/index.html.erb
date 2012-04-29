@@ -1,35 +1,22 @@
-<h1>Listing users</h1>
-
 <table>
-  <tr>
-    <th>Pledge name</th>
-    <th>Class name</th>
-    <th>Birthday</th>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Role</th>
-    <th>Alumni</th>
-    <th></th>
-    <th></th>
-    <th></th>
+  <tr class="tableTitle">
+    <td>Name</td>
+    <td>Class</td>
+    <td></td>
+    <td></td>
   </tr>
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.pledge_name %></td>
+    <td><%= link_to user.proper_name, user_path(user) %></td>
     <td><%= user.class_name %></td>
-    <td><%= user.birthday %></td>
-    <td><%= user.first_name %></td>
-    <td><%= user.last_name %></td>
-    <td><%= user.role %></td>
-    <td><%= user.alumni %></td>
-    <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New User', new_user_path %>
+<div class="actions">
+    <%= will_paginate @users, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+    <%= link_to 'New User', new_user_path, :class => 'btn' %>
+</div>

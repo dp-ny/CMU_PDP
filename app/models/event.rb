@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :date, :description, :name, :event_attendances_attributes, :document, :document_name
+  attr_accessible :date, :description, :name, :event_attendances_attributes, :document
 
   has_many :event_attendances
 	has_many :users, :through => :event_attendances
@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
 
 	accepts_nested_attributes_for :event_attendances
 
-  mount_uploader :document, DocumentUploader, :mount_on => :document_name
+  mount_uploader :document, DocumentUploader
 
   def take_attendance
   	attendance = EventAttendance.for_event(self.id)

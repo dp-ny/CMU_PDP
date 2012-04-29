@@ -25,6 +25,7 @@
     <th>Date</th>
     <th>Event</th>
     <th>Present?</th>
+    <th>Late?</th>
   </thead>
 
   <% @attendance.each do |attendance| %>
@@ -32,13 +33,44 @@
       <td><%= attendance.event.date.strftime("%m/%d/%y") %></td>
       <td><%= link_to attendance.event.name, event_path(attendance.event) %></td>
       <td class="<%= "#{(attendance.present)? 'green' : 'red'}" %>"></td>
+      <td class="<%= "#{(attendance.late)? 'orange' : ''}" %>"></td>
     </tr>
   <% end %>
 </table>
 
+</br>
+<table>
+  <tr class="tableTitle">
+    <td>Transactions</td>
+  </tr>
+</table>
+<table>
+  <thead>
+    <th>Date</th>
+    <th>Amount</th>
+    <th>Description</th>
+  </thead>
+
+  <% @transactions.each do |transaction| %>
+    <tr>
+      <td><%= transaction.date.strftime("%m/%d/%y") %></td>
+      <td><%= link_to number_to_currency(transaction.amount), transaction_path(transaction) %></td>
+      <td><%= transaction.description %></td>
+    </tr>
+  <% end %>
+
+  <tr>
+  <td>Total</td>
+  <% sum = 0.0 %>
+  <% @transactions.each {|t| sum += t.amount} %>
+  <td><%= number_to_currency(sum) %></td>
+  <td></td>
+
+</table>
 <br/>
 
 <div class="actions">
+  <%= will_paginate @attendance, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
   <%= link_to 'Edit', edit_user_path(@user), :class => 'btn' %>
   <%= link_to 'Back', users_path, :class => 'btn'  %>
 </div>

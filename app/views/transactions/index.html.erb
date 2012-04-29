@@ -1,29 +1,35 @@
-<h1>Listing transactions</h1>
-
 <table>
-  <tr>
-    <th>User</th>
-    <th>Date</th>
-    <th>Description</th>
-    <th>Amount</th>
-    <th></th>
-    <th></th>
-    <th></th>
+  <tr class="tableTitle">
+    <td>Brother</td>
+    <td>Date</td>
+    <td>Amount</td>
+    <td>Description</td>
+    <td></td>
+    <td></td>
   </tr>
 
 <% @transactions.each do |transaction| %>
   <tr>
-    <td><%= transaction.user_id %></td>
-    <td><%= transaction.date %></td>
+    <td><%= link_to transaction.user.proper_name, user_path(transaction.user) %></td>
+    <td><%= transaction.date.strftime("%m/%d/%y") %></td>
+    <td><%= link_to transaction.amount, transaction_path(transaction) %></td>
     <td><%= transaction.description %></td>
-    <td><%= transaction.amount %></td>
-    <td><%= link_to 'Show', transaction %></td>
     <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
     <td><%= link_to 'Destroy', transaction, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
+<tr>
+  <td>Total</td>
+  <td></td>
+  <% sum = 0.0 %>
+  <% @transactions.each {|t| sum += t.amount} %>
+  <td><%= number_to_currency(sum) %></td>
+  <td></td>
+  <td></td>
+  <td></td>
 </table>
 
-<br />
-
-<%= link_to 'New Transaction', new_transaction_path %>
+<div class="actions">
+  <%= will_paginate @transactions, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+  <%= link_to 'New Transaction', new_transaction_path, :class => 'btn' %>
+</div>

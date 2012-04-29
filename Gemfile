@@ -29,6 +29,7 @@ gem 'cancan'
 gem 'carrierwave'
 gem 'simple_form'
 gem 'nested_form', :git => 'git://github.com/ryanb/nested_form.git'
+gem 'populator'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

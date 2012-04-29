@@ -1,25 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>User:</b>
-  <%= @transaction.user_id %>
-</p>
+<table>
+  <tr class="tableTitle">
+    <td>Transaction Info</td>
+  </tr>
+</table>
 
-<p>
-  <b>Date:</b>
-  <%= @transaction.date %>
-</p>
+<table>
+	  <thead><th><%= @transaction.user.proper_name %></th></thead>
+    <tr><td><%= @transaction.date.strftime("%m/%d/%y") %></td></tr>
+    <tr><td><%= number_to_currency @transaction.amount %></td></tr>
+    <tr><td><%= @transaction.description %></td></tr>
+</table>
 
-<p>
-  <b>Description:</b>
-  <%= @transaction.description %>
-</p>
-
-<p>
-  <b>Amount:</b>
-  <%= @transaction.amount %>
-</p>
-
-
-<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
-<%= link_to 'Back', transactions_path %>
+<div class="actions">
+<%= link_to 'Edit', edit_transaction_path(@transaction), :class => 'btn' %>
+<%= link_to 'Back', transactions_path, :class => 'btn' %>
+</div>

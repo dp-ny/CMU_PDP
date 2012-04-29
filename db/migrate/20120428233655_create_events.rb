@@ -4,7 +4,7 @@ class CreateEvents < ActiveRecord::Migration
       t.date :date
       t.string :name
       t.text :description
-      t.string :document_name
+      t.string :document
 
       t.timestamps
     end
