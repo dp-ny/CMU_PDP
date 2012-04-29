@@ -8,7 +8,18 @@
 </head>
 <body>
 
-<%= yield %>
+<div id="container">
+  <%= yield %>
+</div>
+
+<div id="login">
+  <% if logged_in? %>
+  	<p>[<%= current_user.proper_name %>: <%= current_user.role.capitalize %>]</p>
+   	<%= link_to 'Logout', logout_path, :class => "btn mini" %>
+  <% else %>
+    <%= link_to 'Login', login_path, :class => "btn mini" %>
+  <% end %>
+</div>
 
 </body>
 </html>

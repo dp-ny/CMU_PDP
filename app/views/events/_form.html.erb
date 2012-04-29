@@ -1,0 +1,43 @@
+<%= nested_form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field"> 
+    <%= f.label :document %><br /> 
+    <%= f.file_field :document %>
+  </div>
+
+  <% if controller.action_name != 'edit' && controller.action_name != 'update' %>
+    <% @users.each do |user| %>
+      <div class="field">
+        <%= f.fields_for :event_attendances do |builder| %>
+          <%= user.proper_name %><br/><%= builder.text_field :user_id, :value => user.id, :class => 'hidden' %><%= render "attendance_fields", :f => builder %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

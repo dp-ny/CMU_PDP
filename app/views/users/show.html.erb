@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <tr class="tableTitle">
+    <td>Personal Info</td>
+  </tr>
+</table>
+<table>
+    <thead><th><%= "#{@user.first_name} \"#{@user.pledge_name}\" #{@user.last_name}" %></th></thead>
+    <tr><td><%= "#{@user.class_name} Class" %></td></tr>
+    <tr><td>Birthday: <%= @user.birthday.strftime("%m/%d/%y") %></td></tr>
+    <tr><td><%= "#{(!@user.alumni)? 'Student' : 'Alumni'}" %></td></tr>
+    
+</table>
+
+
+</br>
+<table>
+  <tr class="tableTitle">
+    <td>Attendance - Late: <%= @late_events.size %> / Absent: <%= @absent_events.size %></td>
+  </tr>
+</table>
+<table>
+  <thead>
+    <th>Date</th>
+    <th>Event</th>
+    <th>Present?</th>
+  </thead>
+
+  <% @attendance.each do |attendance| %>
+    <tr>
+      <td><%= attendance.event.date.strftime("%m/%d/%y") %></td>
+      <td><%= link_to attendance.event.name, event_path(attendance.event) %></td>
+      <td class="<%= "#{(attendance.present)? 'green' : 'red'}" %>"></td>
+    </tr>
+  <% end %>
+</table>
+
+<br/>
+
+<div class="actions">
+  <%= link_to 'Edit', edit_user_path(@user), :class => 'btn' %>
+  <%= link_to 'Back', users_path, :class => 'btn'  %>
+</div>

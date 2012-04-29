@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pledge_name: MyString
+  class_name: MyString
+  birthday: 2012-04-28
+  first_name: MyString
+  last_name: MyString
+  alumni: false
+  password_digest: MyString
+
+two:
+  pledge_name: MyString
+  class_name: MyString
+  birthday: 2012-04-28
+  first_name: MyString
+  last_name: MyString
+  alumni: false
+  password_digest: MyString

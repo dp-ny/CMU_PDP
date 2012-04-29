@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <tr class="tableTitle">
+    <td>Event Info</td>
+  </tr>
+</table>
+
+<table>
+    <thead><th><%= "#{@event.name}" %></th></thead>
+    <tr><td><%= @event.date.strftime("%m/%d/%y") %></td></tr>
+    <tr><td><%= @event.description %></td></tr>
+    
+</table>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

@@ -1,0 +1,48 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :pledge_name %><br />
+    <%= f.text_field :pledge_name %>
+  </div>
+  <div class="field">
+    <%= f.label :class_name %><br />
+    <%= f.select(:class_name, User::CLASS_LIST, :prompt => "Select Class...") %>
+  </div>
+  <div class="field">
+    <%= f.label :birthday %><br />
+    <%= f.date_select :birthday, :as => :date, :start_year => Date.today.year-30, :end_year => Date.today.year, :order => [:month, :day, :year] %>
+  </div>
+  <div class="field">
+    <%= f.check_box :alumni %> <%= f.label :alumni %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class => 'btn' %>
+    <%= link_to 'Back', users_path, :class => 'btn' %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<h1>Listing event_attendances</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Event</th>
+    <th>Present</th>
+    <th>Late</th>
+    <th>Absent</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @event_attendances.each do |event_attendance| %>
+  <tr>
+    <td><%= event_attendance.user_id %></td>
+    <td><%= event_attendance.event_id %></td>
+    <td><%= event_attendance.present %></td>
+    <td><%= event_attendance.late %></td>
+    <td><%= !event_attendance.present %></td>
+    <td><%= link_to 'Show', event_attendance %></td>
+    <td><%= link_to 'Edit', edit_event_attendance_path(event_attendance) %></td>
+    <td><%= link_to 'Destroy', event_attendance, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Event attendance', new_event_attendance_path %>
