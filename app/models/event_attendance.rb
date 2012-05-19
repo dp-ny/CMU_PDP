@@ -10,4 +10,12 @@ class EventAttendance < ActiveRecord::Base
   scope :present, where("present = ?", true)
   scope :absent, where("present = ?", false) 
 
+  def self.find_by_event_and_user(event, user)
+  	EventAttendance.all.each do |ea| 
+  		if ea.user == user && ea.event == event
+  			return ea
+  		end
+  	end
+  end
+
 end

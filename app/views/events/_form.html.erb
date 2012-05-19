@@ -31,7 +31,7 @@
       <div class="field">
         <%= user.proper_name %><br/>
         <% if controller.action_name == 'edit' || controller.action_name == 'update' %>
-          <%= hidden_field_tag "event[event_attendances_attributes][#{user.id-1}][id]", @event.event_attendances.find_by_user_id(user.id).id %>
+          <%= hidden_field_tag "event[event_attendances_attributes][#{user.id-1}][id]", EventAttendance.find_by_event_and_user(@event, user).id %>
         <% end %>
         <%= hidden_field_tag "event[event_attendances_attributes][#{user.id-1}][event_id]", @event.id %>
         <%= hidden_field_tag "event[event_attendances_attributes][#{user.id-1}][user_id]", user.id %>
