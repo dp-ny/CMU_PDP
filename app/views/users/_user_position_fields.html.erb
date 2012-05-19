@@ -1,14 +1,16 @@
   <div class="field">
-    <%= f.label :position_id %><br />
+    <%= f.label :position_id %>
     <%= f.collection_select :position_id, Position.all, :id, :name, :prompt => "Select... " %>
   </div>
   <div class="field">
-    <%= f.label :year %><br />
+    <%= f.label :year %>
     <%= f.date_select :year, :discard_month => true, :discard_day => true, :start_year => Time.now.year, :end_year => Time.now.year+10 %>
   </div>
   <div class="field">
-    <%= f.label :semester %><br />
+    <%= f.label :semester %>
     <%= f.select :semester, UserPosition::SEMESTER_LIST %>
   </div>
 
+<div class="remove">
   <%= f.link_to_remove("Remove Position") %>
+</div><br/>

@@ -12,284 +12,66 @@
  *= require_tree .
 */
 
-* {
-  margin: 0;
-  padding: 0;
-}
+/* ============================== */
+/* ! Layout for desktop version   */
+/* ============================== */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
 body {
-	line-height: 1;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  color: #3D3D3D;
 }
 
-#container {
-  width:700px;
-  height:400px;
-  position:absolute;
-  left:50%;
-  top:50%;
-  margin:-200px 0 0 -350px;
+a:focus {
+  outline: thin dotted;
+}
+a:hover, a:active {
+  outline: 0;
 }
 
-#container table {
-  width: 680px;
-  margin-bottom: 18px;
-  margin-left: 2px;
-  font-size: 12px;
-  text-align:left;
-  border-collapse: collapse;
+a {
+  color: #0069d6;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
 }
-
-#container table tr td .btn {
-  float:right;
-}
-
-
-#container table th, table td {
-  padding: 10px 10px;
-  line-height: 18px;
-  text-align: left;
-  vertical-align:middle;
-}
-
-#container table th {
-  padding-top: 0px;
-  font-weight: bold;
-  vertical-align: middle;
+a:hover {
+  color: #000000;
+  text-decoration: underline;
 }
 
 .tableTitle {
-	font-weight:bold;
-	color:white;
-	vertical-align:middle;
-	background:#777777;
+  font-weight:bold;
+  color:white;
+  vertical-align:middle;
+  background:#777777;
 }
+ 
 
-#container table td {
-  vertical-align: middle;
-  border-top: 1px solid #ddd;
-}
+/* ============================= */
+/* ! Layout for mobile version   */
+/* ============================= */
 
-#container table tbody th {
-  border-top: 1px solid #ddd;
-  vertical-align: middle;
-}
+@media handheld, only screen and (max-width: 767px) {
 
-form {
-	width:675px;
-	margin:0 auto;
-}
-
-input {
-	width:100%;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: normal;
-  line-height: normal;
-  padding:5px;
-  color: #808080;
-  border: 1px solid #ccc;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-  transition: border linear 0.2s, box-shadow linear 0.2s;
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-input[type=submit] {
-  font-family: verdana,arial,helvetica,sans-serif;
-  width: auto;
-  height: auto;
-  font-size: 13px;
-  line-height: normal;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  body {
+    
+  }
 
 }
 
-input:focus, input[type=submit]:focus, input[type=file]:focus {
-  outline: 0;
-  border-color: rgba(82, 168, 236, 0.8);
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
-  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+
+/* ========================================== */
+/* ! Provide higher res assets for iPhone 4   */
+/* ========================================== */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) { 
+
+/*  .logo {
+    background: url(logo2x.jpg) no-repeat;
+    background-size: 212px 303px;
+  }*/
+
 }
 
-input[type=checkbox], input[type=radio] {
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 3px 1px;
-  *margin-top: 0;
-
-  /* IE6-7 */
-
-  line-height: normal;
-  border: none;
-}
-
-select,
-.uneditable-input {
-  width:220px;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: normal;
-  line-height: normal;
-  padding:5px;
-    color: #808080;
-}
-
-.btn {
-  cursor: pointer;
-  display: inline-block;
-  text-decoration:none;
-  background-color: #e6e6e6;
-  background-repeat: no-repeat;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#e6e6e6));
-  background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
-  background-image: -moz-linear-gradient(top, #ffffff, #ffffff 25%, #e6e6e6);
-  background-image: -ms-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
-  background-image: -o-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
-  background-image: linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
-  margin-top:10px;
-  margin-left:-1px;
-  margin-right:15px;
-  padding: 5px 14px 6px;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  color: #333;
-  font-size: 13px;
-  line-height: normal;
-  border: 1px solid #ccc;
-  border-bottom-color: #bbb;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-  -webkit-transition: 0.1s linear all;
-  -moz-transition: 0.1s linear all;
-  -ms-transition: 0.1s linear all;
-  -o-transition: 0.1s linear all;
-  transition: 0.1s linear all;
-}
-
-.btn:hover {
-  color: #333;
-  background:white;
-  text-decoration: none;
-}
-
-.red {
-  background: red;
-}
-
-.green {
-	background: green;
-}
-
-.orange {
-	background:orange;
-}
-
-.hidden {
-	display:none;
-}
-
-.gap {
-  float: left;
-  padding: 0 14px;
-  line-height: 34px;
-  text-decoration: none;
-  border: 1px solid #DDD;
-  border-left-width: 0;
-}
-
-#container .actions {
-	margin-left:6px;
-}
-
-#container form .actions {
-	margin-left:0;
-}
-
-.pagination {
-  height: 36px;
-  margin: 18px 0;
-}
-.pagination ul {
-  float: left;
-  margin: 0;
-  border: 1px solid #ddd;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-.pagination li {
-  display: inline;
-}
-.pagination a {
-  float: left;
-  padding: 0 14px;
-  line-height: 34px;
-  border-right: 1px solid;
-  border-right-color: #ddd;
-  border-right-color: rgba(0, 0, 0, 0.15);
-  *border-right-color: #ddd;
-  /* IE6-7 */
-
-  text-decoration: none;
-}
-.pagination a:hover, .pagination .active a {
-  background-color: #DCE1E7;
-}
-.pagination .disabled a, .pagination .disabled a:hover {
-  background-color: transparent;
-  color: #bfbfbf;
-}
-.pagination .next a {
-  border: 0;
-}
-
-#user_nav {
-  position:fixed;
-  padding:20px;
-  top:0;
-  left:0;
-  width:200px;
-  float:left;
-}

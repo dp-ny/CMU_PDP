@@ -1,24 +1,32 @@
-<table>
-  <tr class="tableTitle">
-    <td>Name</td>
-    <td>Class</td>
-    <td>Phone</td>
-    <td></td>
-    <td></td>
-  </tr>
+<div class="row">
+  <div class="twocol">
+  </div>
+  <div class="eightcol">
+    <table>
+      <tr class="tableTitle">
+        <td>Name</td>
+        <td>Class</td>
+        <td>Phone</td>
+        <td></td>
+        <td></td>
+      </tr>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= link_to user.proper_name, user_path(user) %></td>
-    <td><%= user.class_name %></td>
-    <td><%= number_to_phone user.phone %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.proper_name, user_path(user) %></td>
+        <td><%= user.class_name %></td>
+        <td><%= number_to_phone user.phone %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+    <% end %>
+    </table>
 
-<div class="actions">
-    <%= will_paginate @users, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
-    <%= link_to 'New User', new_user_path, :class => 'btn' %>
+    <div class="actions">
+        <%= will_paginate @users, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+        <%= link_to 'New User', new_user_path, :class => 'btn' %>
+    </div>
+  </div>
+  <div class="twocol last">
+  </div>
 </div>

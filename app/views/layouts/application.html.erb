@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CMUPdp</title>
+  <title>CMU Pi Delta Psi</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <!--[if lte IE 9]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" /><![endif]-->
+  <%= stylesheet_link_tag "1140", :media => "all" %>
+  
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div id="container">
+<div class="container">
   <%= yield %>
 </div>
 
-<div id="user_nav">
-  <% if logged_in? %>
-  	<p>[<%= current_user.proper_name %>: <%= current_user.role.capitalize %>]</p>
-   	<%= link_to 'Logout', logout_path, :class => "btn mini" %>
-  <% else %>
-    <%= link_to 'Login', login_path, :class => "btn mini" %>
-  <% end %>
-</div>
+
 
 </body>
 </html>
