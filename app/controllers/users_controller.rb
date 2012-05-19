@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @late_events = @exact_attendance[1]
     @absent_events = @exact_attendance[2]
     @transactions = Transaction.for_user(@user.id)
-    
+    @user_positions = UserPosition.for_user(@user.id).chronological
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
