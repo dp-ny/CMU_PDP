@@ -3,13 +3,13 @@ class User < ActiveRecord::Base
 
   has_secure_password
   validates_presence_of :password, :password_confirmation
-	validates_format_of :phone, :with => /^\(?\d{3}\)?[-. ]?\d{3}[-.]?\d{4}$/, :message => "should be 10 digits (area code needed) and delimited with dashes only", :allow_blank => true
+	validates_format_of :phone, :with => /^\(?\d{3}\)?[-. ]?\d{3}[-. ]?\d{4}$/, :message => "should be 10 digits (area code needed) and delimited with dashes only", :allow_blank => true
   
   before_save :reformat_phone
 
-  has_many :transactions
-  has_many :event_attendances
-	has_many :events, :through => :event_attendances
+  has_many :transactions, :dependent => :destroy
+  has_many :event_attendances, :dependent => :destroy
+	has_many :events, :through => :event_attendances, :dependent => :destroy
 
 
 
