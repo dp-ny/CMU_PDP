@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 
 
 	scope :alphabetical, order('last_name, first_name')
+  scope :student, where('alumni = ?', false)
 
   CLASS_LIST = ['Alpha', 'Beta', 'Gamma', 'Delta', 'Eta', 'Zeta', 'Theta', 'Iota', 'Lambda', 'Mu', 'Nu', 'Xi', 'Omicron', 'Pi', 'Rho', 'Sigma', 'Tau', 'Upsilon', 'Phi']
   ROLE_LIST = ['admin', 'user']
@@ -40,6 +41,14 @@ class User < ActiveRecord::Base
       end
     end
     return false
+  end
+
+  def self.find_by_full_name(full_name)
+    User.all.each do |user|
+      if user.proper_name == full_name
+        return user
+      end
+    end
   end
 
 

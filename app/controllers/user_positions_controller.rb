@@ -25,7 +25,7 @@ class UserPositionsController < ApplicationController
   # GET /user_positions/new.json
   def new
     @user_position = UserPosition.new
-
+    @positions = Position.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user_position }

@@ -5,7 +5,6 @@
     <th>User</th>
     <th>Position</th>
     <th>Year</th>
-    <th>Semester</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,10 +12,9 @@
 
 <% @user_positions.each do |user_position| %>
   <tr>
-    <td><%= user_position.user_id %></td>
-    <td><%= user_position.position_id %></td>
-    <td><%= user_position.year %></td>
-    <td><%= user_position.semester %></td>
+    <td><%= link_to user_position.user.proper_name, user_path(user_position.user) %></td>
+    <td><%= user_position.position.name %></td>
+    <td><%= user_position.semester %> <%= user_position.year.strftime("%Y") %></td>
     <td><%= link_to 'Show', user_position %></td>
     <td><%= link_to 'Edit', edit_user_position_path(user_position) %></td>
     <td><%= link_to 'Destroy', user_position, confirm: 'Are you sure?', method: :delete %></td>

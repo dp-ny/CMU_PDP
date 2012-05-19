@@ -30,7 +30,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @event.event_attendances.build
-    @users = User.all
+    @users = User.student
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @event }

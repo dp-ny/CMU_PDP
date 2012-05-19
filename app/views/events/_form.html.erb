@@ -36,9 +36,11 @@
         <%= hidden_field_tag "event[event_attendances_attributes][#{user.id-1}][event_id]", @event.id %>
         <%= hidden_field_tag "event[event_attendances_attributes][#{user.id-1}][user_id]", user.id %>
         <%= hidden_field_tag "event[event_attendances_attributes][#{user.id-1}][present]", 0 %>
-        <%= check_box_tag "event[event_attendances_attributes][#{user.id-1}][present]", 1, user.present?(@event) %> Present
+        <%= check_box_tag "event[event_attendances_attributes][#{user.id-1}][present]", 1, user.present?(@event) , id: "#{user.id-1}_present" %>
+  <%= label_tag "#{user.id-1}_present", "Present" %><br>
         <%= hidden_field_tag "event[event_attendances_attributes][#{user.id-1}][late]", 0 %>
-        <%= check_box_tag "event[event_attendances_attributes][#{user.id-1}][late]", 1, user.late?(@event) %> Late
+        <%= check_box_tag "event[event_attendances_attributes][#{user.id-1}][late]", 1, user.late?(@event) , id: "#{user.id-1}_late" %>
+  <%= label_tag "#{user.id-1}_late", "Late" %><br>
         
       </div>
     <% end %>

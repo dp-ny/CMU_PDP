@@ -3,4 +3,6 @@ class UserPosition < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :position
+
+  SEMESTER_LIST = %w[Spring Fall]
 end
