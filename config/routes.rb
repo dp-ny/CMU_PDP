@@ -1,5 +1,9 @@
 CMUPdp::Application.routes.draw do
  
+  resources :user_positions
+
+  resources :positions
+
   resources :event_attendances
 
   resources :events

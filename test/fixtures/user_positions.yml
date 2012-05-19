@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  position_id: 1
+  year: 2012-05-18
+  semester: MyString
+
+two:
+  user_id: 1
+  position_id: 1
+  year: 2012-05-18
+  semester: MyString

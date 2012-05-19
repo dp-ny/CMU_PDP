@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :transactions, :dependent => :destroy
   has_many :event_attendances, :dependent => :destroy
 	has_many :events, :through => :event_attendances, :dependent => :destroy
+  has_many :user_positions, :dependent => :destroy
+  has_many :positions, :through => :user_positions, :dependent => :destroy
 
 
 

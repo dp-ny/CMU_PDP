@@ -1,0 +1,29 @@
+<h1>Listing user_positions</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Position</th>
+    <th>Year</th>
+    <th>Semester</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_positions.each do |user_position| %>
+  <tr>
+    <td><%= user_position.user_id %></td>
+    <td><%= user_position.position_id %></td>
+    <td><%= user_position.year %></td>
+    <td><%= user_position.semester %></td>
+    <td><%= link_to 'Show', user_position %></td>
+    <td><%= link_to 'Edit', edit_user_position_path(user_position) %></td>
+    <td><%= link_to 'Destroy', user_position, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User position', new_user_position_path %>
