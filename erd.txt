@@ -1,7 +1,21 @@
 Bro
-	Active to school
-	Active to nationals
-	Active to chapter
-	Where they live
+	MODELS TO ADD
+	Active
+		Active to school
+		Active to nationals
+		Active to chapter
 	Orgs
 	Positions
+
+	Where they live
+	
+Event	
+	Service Hours
+
+Transaction
+	photo upload
+	pending = true / false
+	accepted = true / false
+	treasury_comment
+
+	

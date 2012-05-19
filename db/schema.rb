@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20120428233808) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "role",            :default => "user"
+    t.string   "phone"
     t.boolean  "alumni",          :default => false
     t.string   "password_digest"
     t.datetime "created_at",                          :null => false

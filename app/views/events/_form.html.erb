@@ -27,16 +27,22 @@
     <%= f.label :document %><br /> 
     <%= f.file_field :document %>
   </div>
-
-  <% if controller.action_name != 'edit' && controller.action_name != 'update' %>
-    <% @users.each do |user| %>
+<% @users.each do |user| %>
       <div class="field">
-        <%= f.fields_for :event_attendances do |builder| %>
-          <%= user.proper_name %><br/><%= builder.text_field :user_id, :value => user.id, :class => 'hidden' %><%= render "attendance_fields", :f => builder %>
+        <%= user.proper_name %><br/>
+        <% if controller.action_name == 'edit' || controller.action_name == 'update' %>
+          <%= hidden_field_tag "event[event_attendances_attributes][#{user.id-1}][id]", @event.event_attendances.find_by_user_id(user.id).id %>
         <% end %>
+        <%= hidden_field_tag "event[event_attendances_attributes][#{user.id-1}][event_id]", @event.id %>
+        <%= hidden_field_tag "event[event_attendances_attributes][#{user.id-1}][user_id]", user.id %>
+        <%= hidden_field_tag "event[event_attendances_attributes][#{user.id-1}][present]", 0 %>
+        <%= check_box_tag "event[event_attendances_attributes][#{user.id-1}][present]", 1, user.present?(@event) %> Present
+        <%= hidden_field_tag "event[event_attendances_attributes][#{user.id-1}][late]", 0 %>
+        <%= check_box_tag "event[event_attendances_attributes][#{user.id-1}][late]", 1, user.late?(@event) %> Late
+        
       </div>
     <% end %>
-  <% end %>
+  <%# end %>
   <div class="actions">
     <%= f.submit :class => 'btn' %>
     <%= link_to 'Back', events_path, :class => 'btn' %>

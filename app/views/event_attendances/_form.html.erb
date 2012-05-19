@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.collection_select :user_id, User.all, :id, :proper_name, :prompt => "Select ..." %>
   </div>
   <div class="field">
     <%= f.label :event_id %><br />
-    <%= f.number_field :event_id %>
+    <%= f.collection_select :event_id, Event.all, :id, :name, :prompt => "Select ..." %>
   </div>
   <div class="field">
     <%= f.label :present %><br />
@@ -26,10 +26,6 @@
   <div class="field">
     <%= f.label :late %><br />
     <%= f.check_box :late %>
-  </div>
-  <div class="field">
-    <%= f.label :absent %><br />
-    <%= f.check_box :absent %>
   </div>
   <div class="actions">
     <%= f.submit %>

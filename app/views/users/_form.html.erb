@@ -31,6 +31,10 @@
     <%= f.date_select :birthday, :as => :date, :start_year => Date.today.year-30, :end_year => Date.today.year, :order => [:month, :day, :year] %>
   </div>
   <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
     <%= f.check_box :alumni %> <%= f.label :alumni %>
   </div>
   <div class="field">

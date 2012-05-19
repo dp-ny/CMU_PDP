@@ -2,12 +2,12 @@
 
 <p>
   <b>User:</b>
-  <%= @event_attendance.user_id %>
+  <%= @event_attendance.user.proper_name %>
 </p>
 
 <p>
   <b>Event:</b>
-  <%= @event_attendance.event_id %>
+  <%= @event_attendance.event.name %>
 </p>
 
 <p>
@@ -18,11 +18,6 @@
 <p>
   <b>Late:</b>
   <%= @event_attendance.late %>
-</p>
-
-<p>
-  <b>Absent:</b>
-  <%= @event_attendance.absent %>
 </p>
 
 

@@ -1,12 +1,12 @@
 class Event < ActiveRecord::Base
   attr_accessible :date, :description, :name, :event_attendances_attributes, :document
 
-  has_many :event_attendances
-	has_many :users, :through => :event_attendances
+  has_many :event_attendances, :dependent => :destroy
+	has_many :users, :through => :event_attendances, :dependent => :destroy
 
 	scope :chronological, order('date DESC')
 
-	accepts_nested_attributes_for :event_attendances
+	accepts_nested_attributes_for :event_attendances, :allow_destroy => true
 
   mount_uploader :document, DocumentUploader
 

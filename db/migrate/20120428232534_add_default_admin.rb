@@ -6,6 +6,7 @@ class AddDefaultAdmin < ActiveRecord::Migration
   	admin.class_name = "Tau"
   	admin.pledge_name = "Stark"
   	admin.birthday = Date.new(1992, 8, 29)
+    admin.phone = "5103863939"
   	admin.password = "1234"
   	admin.password_confirmation = "1234"
     admin.role = "admin"
