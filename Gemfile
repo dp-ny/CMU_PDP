@@ -31,6 +31,7 @@ gem 'simple_form'
 gem 'nested_form', :git => 'git://github.com/ryanb/nested_form.git'
 gem 'populator'
 gem 'spreadsheet'
+gem 'simple-navigation'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

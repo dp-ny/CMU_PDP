@@ -11,8 +11,19 @@
 </head>
 <body>
 
+<div class="navbar">
+  <div class="container">
+    <div class="row">
+      <div class="nav">
+        <%= render_navigation %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
-  <%= yield %>
+  <div class="push"></div>
+    <%= yield %>
 </div>
 
 
