@@ -19,6 +19,9 @@ table td {
   vertical-align: top;
   border-top: 1px solid #ddd;
 }
+.tableSort {
+  color:white;
+}
 table tbody th {
   border-top: 1px solid #ddd;
   vertical-align: top;

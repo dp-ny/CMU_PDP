@@ -8,4 +8,12 @@ class UserPosition < ActiveRecord::Base
   scope :chronological, order('year DESC')
 
   SEMESTER_LIST = %w[Spring Fall]
+
+  def self.current_semester 
+  	now = Time.now.month
+  	if now >= 1 && now <= 5
+  		return 'Spring'
+  	return 'Fall'
+  end
+  
 end

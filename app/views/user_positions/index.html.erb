@@ -27,6 +27,7 @@
 <br />
 
 <div class="actions">
+<%= will_paginate @user_positions, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
 <%= link_to 'New User Position', new_user_position_path, :class => 'btn' %>
 </div>
   </div>

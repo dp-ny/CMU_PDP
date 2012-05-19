@@ -13,9 +13,11 @@ namespace :db do
     [User, Transaction, Event, EventAttendance, Position, UserPosition].each(&:delete_all)
     
     book = Spreadsheet.open 'lib/assets/brothers.xls'
-    sheet = book.worksheet 0
 
-    sheet.each do |row|
+    # Seed database with brother information
+    brothers = book.worksheet 'Brothers'
+
+    brothers.each do |row|
       if !row[0].blank?
         user = User.new
         if row[0].split(' ').size > 2
@@ -40,7 +42,8 @@ namespace :db do
       end
     end
 
-    positions = book.worksheet 1
+    #Seed database with positions
+    positions = book.worksheet 'Fall 2012 Positions'
 
     positions.each do |row|
       if !row[0].blank?

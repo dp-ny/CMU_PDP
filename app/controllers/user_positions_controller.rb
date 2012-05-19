@@ -2,7 +2,7 @@ class UserPositionsController < ApplicationController
   # GET /user_positions
   # GET /user_positions.json
   def index
-    @user_positions = UserPosition.all
+    @user_positions = UserPosition.chronological.paginate(:page => params[:page]).per_page(10)
 
     respond_to do |format|
       format.html # index.html.erb

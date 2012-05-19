@@ -4,9 +4,10 @@
   <div class="tencol">
     <table>
       <tr class="tableTitle">
-        <td>Name</td>
-        <td>Class</td>
+        <td><%= sortable "last_name", 'Name' %></td>
+        <td><%= sortable 'class_name', "Class" %></td>
         <td>Phone</td>
+        <td><%= sortable 'alumni' %></td>
         <td></td>
         <td></td>
       </tr>
@@ -16,6 +17,7 @@
         <td><%= link_to user.proper_name, user_path(user) %></td>
         <td><%= user.class_name %></td>
         <td><%= number_to_phone user.phone %></td>
+        <td><%= "#{(user.alumni)? 'X' : ''}" %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
       </tr>
