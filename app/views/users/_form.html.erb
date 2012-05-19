@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= nested_form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -37,14 +37,20 @@
   <div class="field">
     <%= f.check_box :alumni %> <%= f.label :alumni %>
   </div>
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
+  <% if controller.action_name != 'edit' && controller.action_name != 'update' %> 
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+  <% end %>
+  <%= f.fields_for :user_positions do |builder| %>
+    <%= render :partial => 'user_position_fields', :locals => { :f => builder } %>      
+  <% end %> 
+  <%= f.link_to_add("Add Position", :user_positions) %>
   <div class="actions">
     <%= f.submit :class => 'btn' %>
     <%= link_to 'Back', users_path, :class => 'btn' %>

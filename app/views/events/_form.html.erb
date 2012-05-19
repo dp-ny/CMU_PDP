@@ -27,7 +27,7 @@
     <%= f.label :document %><br /> 
     <%= f.file_field :document %>
   </div>
-<% @users.each do |user| %>
+    <% @users.each do |user| %>
       <div class="field">
         <%= user.proper_name %><br/>
         <% if controller.action_name == 'edit' || controller.action_name == 'update' %>
@@ -37,10 +37,10 @@
         <%= hidden_field_tag "event[event_attendances_attributes][#{user.id-1}][user_id]", user.id %>
         <%= hidden_field_tag "event[event_attendances_attributes][#{user.id-1}][present]", 0 %>
         <%= check_box_tag "event[event_attendances_attributes][#{user.id-1}][present]", 1, user.present?(@event) , id: "#{user.id-1}_present" %>
-  <%= label_tag "#{user.id-1}_present", "Present" %><br>
+        <%= label_tag "#{user.id-1}_present", "Present" %><br>
         <%= hidden_field_tag "event[event_attendances_attributes][#{user.id-1}][late]", 0 %>
         <%= check_box_tag "event[event_attendances_attributes][#{user.id-1}][late]", 1, user.late?(@event) , id: "#{user.id-1}_late" %>
-  <%= label_tag "#{user.id-1}_late", "Late" %><br>
+        <%= label_tag "#{user.id-1}_late", "Late" %><br>
         
       </div>
     <% end %>

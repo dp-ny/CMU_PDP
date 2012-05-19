@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
-  attr_accessible :alumni, :birthday, :role, :class_name, :first_name, :last_name, :password_digest, :pledge_name, :phone, :password, :password_confirmation
+  attr_accessible :user_positions_attributes, :alumni, :birthday, :role, :class_name, :first_name, :last_name, :password_digest, :pledge_name, :phone, :password, :password_confirmation
 
   has_secure_password
-  validates_presence_of :password, :password_confirmation
+  validates_presence_of :password, :password_confirmation, :on => :create
 	validates_format_of :phone, :with => /^\(?\d{3}\)?[-. ]?\d{3}[-. ]?\d{4}$/, :message => "should be 10 digits (area code needed) and delimited with dashes only", :allow_blank => true
   
   before_save :reformat_phone
@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :user_positions, :dependent => :destroy
   has_many :positions, :through => :user_positions, :dependent => :destroy
 
+  accepts_nested_attributes_for :user_positions, :reject_if => lambda {|up| up[:position_id].blank?} , :allow_destroy => true
 
 
 	scope :alphabetical, order('last_name, first_name')
@@ -50,7 +51,6 @@ class User < ActiveRecord::Base
       end
     end
   end
-
 
   def take_attendance
   	attendance = EventAttendance.for_user(self.id)
