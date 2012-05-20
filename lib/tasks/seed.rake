@@ -14,6 +14,14 @@ namespace :seed do
   	book = Spreadsheet.open 'lib/assets/brothers.xls'
   	positions = book.worksheet ENV['sheet']
 
+  	# get semester info
+  	semester = ENV['sheet'].split(' ')
+
+  	s = Semester.new
+    s.year = semester[1]
+    s.semester = semester[0]
+    s.save!
+
     positions.each do |row|
       if !row[0].blank?
       	position = Position.find_by_name(row[0])
@@ -29,10 +37,6 @@ namespace :seed do
           up = UserPosition.new
           up.position_id = position.id
           up.user_id = User.find_by_full_name(row[i].to_s).id
-          s = Semester.new
-          s.year = Time.now
-          s.semester = Semester.current_semester
-          s.save!
           up.semester_id = s.id
           i += 1
           up.save!
