@@ -3,8 +3,7 @@ class CreateUserPositions < ActiveRecord::Migration
     create_table :user_positions do |t|
       t.integer :user_id
       t.integer :position_id
-      t.date :year
-      t.string :semester
+      t.integer :semester_id
 
       t.timestamps
     end

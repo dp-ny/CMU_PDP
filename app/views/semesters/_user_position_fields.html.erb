@@ -1,0 +1,10 @@
+  
+  <div class="field">
+    <%= f.label nil, "#{position.name}" %>
+    <%= f.hidden_field :position_id, :value => position.id %>
+    <%# f.collection_select :position_id, @positions, :id, :name, :selected => position.id, :disabled => true %>
+    <%= f.collection_select :user_id, User.student, :id, :proper_name, :prompt => "Select... " %>
+    <div class="remove">
+      <%= f.link_to_remove("Remove Position") %>
+    </div>
+  </div>

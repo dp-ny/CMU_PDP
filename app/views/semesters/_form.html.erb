@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="onecol">
+  </div>
+  <div class="tencol">
+<%= nested_form_for(@semester) do |f| %>
+  <% if @semester.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@semester.errors.count, "error") %> prohibited this semester from being saved:</h2>
+
+      <ul>
+      <% @semester.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :semester %>
+    <%= f.select :semester, Semester::SEMESTER_LIST %>
+  </div>
+  <div class="field">
+    <%= f.label :year %>
+    <%= f.date_select :year, :discard_month => true, :discard_day => true, :start_year => Time.now.year, :end_year => Time.now.year+10 %>
+  </div>
+  <% @positions.each do |position| %>
+    <%= f.fields_for :user_positions, @semester.user_positions.build do |builder| %>
+      <%= render :partial => 'user_position_fields', :locals => { :f => builder, :position => position } %>  
+    <% end %> 
+    <div class="field remove">
+      <%= link_to_add_fields "Add Another #{position.name}", f, :user_positions, :position => position %>   
+    </div>
+  <% end %>
+  
+  <div class="actions">
+    <%= f.submit :class => 'btn' %>
+  </div>
+<% end %>
+
+  </div>
+  <div class="onecol last">
+  </div>
+</div>

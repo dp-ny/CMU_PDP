@@ -3,12 +3,8 @@
     <%= f.collection_select :position_id, Position.all, :id, :name, :prompt => "Select... " %>
   </div>
   <div class="field">
-    <%= f.label :year %>
-    <%= f.date_select :year, :discard_month => true, :discard_day => true, :start_year => Time.now.year, :end_year => Time.now.year+10 %>
-  </div>
-  <div class="field">
-    <%= f.label :semester %>
-    <%= f.select :semester, UserPosition::SEMESTER_LIST %>
+    <%= f.label :semester_id %>
+    <%= f.collection_select :semester_id, Semester.all, :id, :name, :prompt => "Select... " %>
   </div>
 
 <div class="remove">

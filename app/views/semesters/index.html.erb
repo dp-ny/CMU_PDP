@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="onecol">
+  </div>
+  <div class="tencol">
+<table>
+  <tr class="tableTitle">
+    <td>Semester</td>
+    <td></td>
+    <td></td>
+  </tr>
+
+<% @semesters.each do |semester| %>
+  <tr>
+    <td><%= link_to "#{semester.semester} #{semester.year.strftime('%Y')}", semester_path(semester) %></td>
+    <td><%= link_to 'Edit', edit_semester_path(semester) %></td>
+    <td><%= link_to 'Destroy', semester, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<div class="actions">
+<%= will_paginate @semesters, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+<%= link_to 'New Semester', new_semester_path, :class => 'btn' %>
+</div>
+  </div>
+  <div class="onecol last">
+  </div>
+</div>

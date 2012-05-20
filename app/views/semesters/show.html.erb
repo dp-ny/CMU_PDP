@@ -3,6 +3,10 @@
   </div>
   <div class="tencol">
 <table>
+	<thead>
+		<th><%= @semester.semester %> <%= @semester.year.strftime('%Y') %> Officers</th>
+	</thead>
+ 
   <tr class="tableTitle">
     <td>User</td>
     <td>Position</td>
@@ -24,9 +28,13 @@
 
 <div class="actions">
 <%= will_paginate @user_positions, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
-<%= link_to 'New User Position', new_user_position_path, :class => 'btn' %>
+<%= link_to 'Edit', edit_semester_path(@semester), :class => 'btn' %> 
+<%= link_to 'Back', semesters_path, :class => 'btn' %>
+
 </div>
   </div>
   <div class="onecol last">
   </div>
 </div>
+
+

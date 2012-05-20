@@ -52,7 +52,8 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :home, "Home", root_url
     primary.item :users, "Users", users_path
     primary.item :events, "Events", events_path
-    primary.item :user_positions, "Positions", user_positions_path
+    primary.item :positions, "Positions", positions_path
+    primary.item :semesters, "Semesters", semesters_path
 
     # you can also specify a css id or class to attach to this particular level
     # works for all levels of the menu

@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 	has_many :events, :through => :event_attendances, :dependent => :destroy
   has_many :user_positions, :dependent => :destroy
   has_many :positions, :through => :user_positions, :dependent => :destroy
+  has_many :semesters, :through => :user_positions, :dependent => :destroy
 
   accepts_nested_attributes_for :user_positions, :reject_if => lambda {|up| up[:position_id].blank?} , :allow_destroy => true
 

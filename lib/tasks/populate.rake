@@ -41,30 +41,6 @@ namespace :db do
         p "saved #{user.proper_name}"
       end
     end
-
-    #Seed database with positions
-    positions = book.worksheet 'Fall 2012 Positions'
-
-    positions.each do |row|
-      if !row[0].blank?
-        position = Position.new
-        position.name = row[0]
-        position.save!
-        p "saved #{position.name}"
-        i = 1
-        while !row[i].nil?
-          p "#{row[i]}"
-          up = UserPosition.new
-          up.position_id = position.id
-          up.user_id = User.find_by_full_name(row[i].to_s).id
-          up.year = Date.new(2012, 9, 1)
-          up.semester = "Fall"
-          i += 1
-          up.save!
-        end 
-        
-      end
-    end
-    
+   
   end
 end      

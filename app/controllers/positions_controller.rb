@@ -2,7 +2,7 @@ class PositionsController < ApplicationController
   # GET /positions
   # GET /positions.json
   def index
-    @positions = Position.all
+    @positions = Position.paginate(:page => params[:page]).per_page(10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,7 @@ class PositionsController < ApplicationController
   # GET /positions/1.json
   def show
     @position = Position.find(params[:id])
-
+    @user_positions = UserPosition.for_position(@position.id).paginate(:page => params[:page]).per_page(10)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @position }

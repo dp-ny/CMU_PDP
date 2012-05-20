@@ -14,8 +14,17 @@
 <div class="navbar">
   <div class="container">
     <div class="row">
-      <div class="nav">
-        <%= render_navigation %>
+      <div class="tencol">
+        <div class="nav">
+          <%= render_navigation %>
+        </div>
+      </div>
+      <div class="twocol last">
+        <div class="info">
+          <ul>
+            <li><%= Semester.current_semester %> <%= Time.now.year %></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

@@ -1,11 +1,36 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="onecol">
+  </div>
+  <div class="tencol">
+<table>
+	<thead>
+		<th>People who have held the <%= @position.name %> position.</th>
+	</thead>
+ 
+  <tr class="tableTitle">
+    <td>User</td>
+    <td>Semester</td>
+  </tr>
 
-<p>
-  <b>Name:</b>
-  <%= @position.name %>
-</p>
+<% @user_positions.each do |user_position| %>
+  <tr>
+    <td><%= link_to user_position.user.proper_name, user_path(user_position.user) %></td>
+    <td><%= link_to user_position.semester.name, semester_path(user_position.semester) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<div class="actions">
+<%= will_paginate @user_positions, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+<%= link_to 'Edit', edit_position_path(@position), :class => 'btn' %> 
+<%= link_to 'Back', positions_path, :class => 'btn' %>
+
+</div>
+  </div>
+  <div class="onecol last">
+  </div>
+</div>
 
 
-
-<%= link_to 'Edit', edit_position_path(@position) %> |
-<%= link_to 'Back', positions_path %>

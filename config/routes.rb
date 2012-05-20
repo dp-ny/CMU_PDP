@@ -1,5 +1,7 @@
 CMUPdp::Application.routes.draw do
  
+  resources :semesters
+
   resources :user_positions
 
   resources :positions

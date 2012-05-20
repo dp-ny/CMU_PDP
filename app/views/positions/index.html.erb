@@ -1,23 +1,30 @@
-<h1>Listing positions</h1>
-
+<div class="row">
+  <div class="onecol">
+  </div>
+  <div class="tencol">
 <table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
+  <tr class="tableTitle">
+    <td>Name</td>
+    <td></td>
+    <td></td>
   </tr>
 
-<% @positions.each do |position| %>
+  <% @positions.each do |position| %>
   <tr>
-    <td><%= position.name %></td>
-    <td><%= link_to 'Show', position %></td>
+    <td><%= link_to position.name, position_path(position) %></td>
     <td><%= link_to 'Edit', edit_position_path(position) %></td>
-    <td><%= link_to 'Destroy', position, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Delete', position, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Position', new_position_path %>
+<div class="actions">
+<%= will_paginate @positions, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+<%= link_to 'New Position', new_semester_path, :class => 'btn' %>
+</div>
+  </div>
+  <div class="onecol last">
+  </div>
+</div>

@@ -95,7 +95,7 @@
   <% @user_positions.each do |user_position| %>
     <tr>
       <td><%= user_position.position.name %></td>
-      <td><%= user_position.semester %> <%= user_position.year.strftime("%Y") %></td>
+      <td><%= link_to user_position.semester.name, semester_path(user_position.semester) %></td>
     </tr>
   <% end %>
 </table>
