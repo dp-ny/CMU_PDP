@@ -23,6 +23,9 @@ body {
   color: #3D3D3D;
 }
 
+h1 {
+  padding:10px;
+}
 a:focus {
   outline: thin dotted;
 }
@@ -114,6 +117,10 @@ a:hover {
 .nav li a:active, .selected {
   background-color: #222;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.info {
+  float:right;
 }
 
 .info ul {

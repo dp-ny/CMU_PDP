@@ -19,7 +19,7 @@ CMUPdp::Application.routes.draw do
   resources :sessions
   resources :users
 
-  root :to => 'users#index'
+  root :to => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

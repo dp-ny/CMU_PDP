@@ -2,9 +2,10 @@
 <html>
 <head>
   <title>CMU Pi Delta Psi</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <!--[if lte IE 9]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" /><![endif]-->
   <%= stylesheet_link_tag "1140", :media => "all" %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+
   
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -14,15 +15,19 @@
 <div class="navbar">
   <div class="container">
     <div class="row">
-      <div class="tencol">
+      <div class="ninecol">
         <div class="nav">
           <%= render_navigation %>
         </div>
       </div>
-      <div class="twocol last">
+      <div class="threecol last">
         <div class="info">
           <ul>
-            <li><%= Semester.current_semester %> <%= Time.now.year %></li>
+            <% if logged_in? %> 
+              <li><%= link_to'Logout', logout_path, :class => 'tableSort' %> | <%= current_user.proper_name if logged_in? %></li>
+            <% else %>
+              <li><%= link_to('Login', login_path) %> | Guest</li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -32,7 +37,25 @@
 
 <div class="container">
   <div class="push"></div>
-    <%= yield %>
+  <div class="row">
+    <div class="tencol">
+      <%= yield %>
+    </div>
+    <div class="twocol last">
+      <% flash.each do |name, msg| %>
+        <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+          <a class="close" data-dismiss="alert">&times;</a>
+          <%= msg %>
+        </div>
+      <% end %>
+
+      <table>
+        <tr class="tableTitle">
+          <td><%= Semester.current_semester %> <%= Time.now.year %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
 
 

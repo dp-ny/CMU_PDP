@@ -1,6 +1,5 @@
-<h1>Log in</h1>
-
-<%= form_tag sessions_path do %>
+  	<h1>Please Sign In</h1>
+  	<%= form_tag sessions_path do %>
   <div class="field">
     <%= label_tag :pledge_name %>
     <%= text_field_tag :pledge_name, params[:pledge_name] %>
@@ -9,5 +8,5 @@
     <%= label_tag :password %>
     <%= password_field_tag :password %>
   </div>
-  <div class="actions"><%= submit_tag "Log in" %></div>
+  <div class="actions"><%= submit_tag "Log in", :class => 'btn' %></div>
 <% end %>
