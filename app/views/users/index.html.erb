@@ -14,13 +14,23 @@
         <td><%= user.class_name %></td>
         <td><%= number_to_phone user.phone %></td>
         <td><%= "#{(user.alumni)? 'X' : ''}" %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Delete', user, confirm: 'Are you sure?', method: :delete %></td>
+        <% if can? :update, user %>
+            <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <% else %>
+            <td></td>
+        <% end %>
+        <% if can? :destroy, user %>
+            <td><%= link_to 'Remove', user, confirm: 'Are you sure?', method: :delete %></td>
+        <% else %>
+            <td></td>
+        <% end %>
       </tr>
     <% end %>
     </table>
 
     <div class="actions">
         <%= will_paginate @users, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
-        <%= link_to 'New User', new_user_path, :class => 'btn' %>
+        <% if can? :create, @user %>
+            <%= link_to 'New User', new_user_path, :class => 'btn' %>
+        <% end %>
     </div>

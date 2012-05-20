@@ -1,4 +1,7 @@
 class PositionsController < ApplicationController
+  
+  authorize_resource
+
   # GET /positions
   # GET /positions.json
   def index

@@ -7,7 +7,7 @@
     <thead><th><%= "#{@user.first_name} \"#{@user.pledge_name}\" #{@user.last_name}" %></th></thead>
     <tr><td><%= "#{@user.class_name} Class" %></td></tr>
     <tr><td><%= number_to_phone @user.phone %></td></tr>
-    <tr><td>Birthday: <%= @user.birthday.strftime("%m/%d/%y") %></td></tr>
+    <tr><td>Birthday: <%= @user.birthday.strftime("%m/%d/%y") unless @user.birthday.nil? %></td></tr>
     <tr><td><%= "#{(!@user.alumni)? 'Student' : 'Alumni'}" %></td></tr>
     
 </table>
@@ -90,7 +90,7 @@
 
   <% @user_positions.each do |user_position| %>
     <tr>
-      <td><%= user_position.position.name %></td>
+      <td><%= link_to user_position.position.name, position_path(user_position.position) %></td>
       <td><%= link_to user_position.semester.name, semester_path(user_position.semester) %></td>
     </tr>
   <% end %>

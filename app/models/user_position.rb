@@ -18,4 +18,15 @@ class UserPosition < ActiveRecord::Base
   	end
   end
 
+  def self.find_current(position)
+    semester = Semester.current_semester
+    year = Time.now.year
+    semester_name = "#{semester} #{year}"
+    UserPosition.for_semester(Semester.chronological.first.id).each do |up|
+      if up.position.name.downcase == position
+        return up.user
+      end
+    end
+  end
+
 end

@@ -17,8 +17,16 @@
     <td><%= ea[0] %></td>
     <td><%= ea[1] %></td>
     <td><%= ea[2] %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Delete', event, confirm: 'Are you sure?', method: :delete %></td>
+    <% if can? :update, event %>
+      <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <% else %>
+        <td></td>
+    <% end %>
+    <% if can? :destroy, event %>
+      <td><%= link_to 'Delete', event, confirm: 'Are you sure?', method: :delete %></td>
+    <% else %>
+        <td></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
@@ -26,5 +34,7 @@
 
 <div class="actions">
   <%= will_paginate @events, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
-<%= link_to 'New Event', new_event_path, :class => 'btn' %>
+  <% if can? :create, Event %>
+    <%= link_to 'New Event', new_event_path, :class => 'btn' %>
+  <% end %>
 </div>

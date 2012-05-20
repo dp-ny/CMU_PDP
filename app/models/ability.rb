@@ -24,5 +24,36 @@ class Ability
     #   can :update, Article, :published => true
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
+
+    user ||= User.new
+
+    semester = Semester.current_semester
+    year = Time.now.year
+    semester_name = "#{semester} #{year}"
+
+    event_admin = [UserPosition.find_current('secretary'), UserPosition.find_current('president'), UserPosition.find_current('vice president'), UserPosition.find_current('webmaster') ]
+    treasury_admin = [UserPosition.find_current('treasurer'), UserPosition.find_current('president'), UserPosition.find_current('vice president'), UserPosition.find_current('webmaster') ]
+    website_admin = [UserPosition.find_current('president'), UserPosition.find_current('vice president'), UserPosition.find_current('webmaster')]
+
+    if website_admin.include?(user) || user.role == 'admin'
+      can :manage, :all
+    elsif event_admin.include?(user)
+      can :create, Event
+      can :update, Event
+      can :read, :all
+    elsif treasury_admin.include?(user)
+      can :create, Transaction
+      can :update, Transaction
+      can :destroy, Transaction
+      can :read, :all
+    elsif user.role == 'user'
+      can :update, User do |u|
+        u.id == user.id
+      end
+      can :read, :all
+    elsif
+      can :read, :all
+    end
+
   end
 end

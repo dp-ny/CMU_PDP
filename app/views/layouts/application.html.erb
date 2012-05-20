@@ -26,7 +26,7 @@
             <% if logged_in? %> 
               <li><%= link_to'Logout', logout_path, :class => 'tableSort' %> | <%= current_user.proper_name if logged_in? %></li>
             <% else %>
-              <li><%= link_to('Login', login_path) %> | Guest</li>
+              <li><%= link_to 'Login', login_path, :class => 'tableSort' %> | Guest</li>
             <% end %>
           </ul>
         </div>
@@ -38,10 +38,10 @@
 <div class="container">
   <div class="push"></div>
   <div class="row">
-    <div class="tencol">
+    <div class="ninecol">
       <%= yield %>
     </div>
-    <div class="twocol last">
+    <div class="threecol last">
       <% flash.each do |name, msg| %>
         <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
           <a class="close" data-dismiss="alert">&times;</a>
