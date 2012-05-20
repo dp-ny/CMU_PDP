@@ -10,7 +10,7 @@ namespace :db do
     require 'spreadsheet'
     
     # Step 0: clear any old data in the db
-    [User, Transaction, Event, EventAttendance, Position, UserPosition].each(&:delete_all)
+    [User, Event, EventAttendance].each(&:delete_all)
     
     book = Spreadsheet.open 'lib/assets/brothers.xls'
 

@@ -18,7 +18,7 @@ namespace :seed do
   	semester = ENV['sheet'].split(' ')
 
   	s = Semester.new
-    s.year = semester[1]
+    s.year = Date.strptime(semester[1], "%Y")
     s.semester = semester[0]
     s.save!
 
