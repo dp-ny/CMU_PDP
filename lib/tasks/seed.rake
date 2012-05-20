@@ -15,7 +15,7 @@ namespace :seed do
   	positions = book.worksheet ENV['sheet']
 
   	# get semester info
-  	semester = ENV['sheet'].split(' ')
+  	semester = ENV['sheet'].split('.')
 
   	s = Semester.new
     s.year = Date.strptime(semester[1], "%Y")
