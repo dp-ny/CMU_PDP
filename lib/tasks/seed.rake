@@ -7,20 +7,18 @@ namespace :seed do
     require 'spreadsheet'
 
   	print "Seeding database..."
-  	if ENV['sheet'].nil?
+  	if ENV['semester'].nil? || ENV['year'].nil?
   		puts "error, sheet cannot be nil"
   		return
   	end
   	book = Spreadsheet.open 'lib/assets/brothers.xls'
-  	positions = book.worksheet ENV['sheet']
-
-  	# get semester info
-  	semester = ENV['sheet'].split('.')
+  	positions = book.worksheet "#{ENV['semester']} #{ENV['year']} Positions" #ENV['sheet']
 
   	s = Semester.new
-    s.year = Date.strptime(semester[1], "%Y")
-    s.semester = semester[0]
+    s.year = Date.strptime(ENV['year'], "%Y")
+    s.semester = ENV['semester']
     s.save!
+    p "Using #{s.name} as semester"
 
     positions.each do |row|
       if !row[0].blank?

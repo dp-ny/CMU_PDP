@@ -22,10 +22,14 @@ class UserPosition < ActiveRecord::Base
     semester = Semester.current_semester
     year = Time.now.year
     semester_name = "#{semester} #{year}"
-    UserPosition.for_semester(Semester.chronological.first.id).each do |up|
-      if up.position.name.downcase == position
-        return up.user
+    if Semester.all.size > 0
+      UserPosition.for_semester(Semester.chronological.first.id).each do |up|
+        if up.position.name.downcase == position
+          return up.user
+        end
       end
+    else
+      return nil
     end
   end
 

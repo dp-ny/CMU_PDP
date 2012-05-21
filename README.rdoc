@@ -4,4 +4,6 @@
 
   rake db:populate
 
-  rake seed:positions sheet="Fall2012Positions"
+  rake seed:positions semester=Fall year=2012
+
+  will look for a sheet in the excel file called "Fall 2012 Positions"
